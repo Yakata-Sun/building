@@ -2,11 +2,13 @@
 
 $mailNew = $_POST['email'];
 
-$name = $_POST['name'];
-$phone = $_POST['phone'];
-$email = $_POST['email'];
-$typeProject = $_POST['typeProject'];
-$message = $_POST['message'];
+$name = $_POST['user_name'];
+$phone = $_POST['user_phone'];
+$form = $_POST['form'] ?? '';
+$width = $_POST['width'] ?? '';
+$height = $_POST['height'] ?? '';
+$type = $_POST['type'] ?? '';
+$profile = $_POST['profile'] ?? '';
 
 
 use PHPMailer\PHPMailer\PHPMailer;
@@ -47,13 +49,16 @@ try {
 	$mail->Body    = '
 			Новая заявка на разработку сайта <br> 
 		email: ' . $mailNew . '';
-	 $mail->Body = '
+	  $mail->Body = '
         <h3>Новая заявка</h3>
-        <p><strong>Имя:</strong> ' . $name . '</p>
-        <p><strong>Телефон:</strong> ' . $phone . '</p>
-        <p><strong>Email:</strong> ' . $email . '</p>
-        <p><strong>Тип проекта:</strong> ' . $typeProject . '</p>
-        <p><strong>Сообщение:</strong><br>' . $message . '</p>
+        <p><strong>Имя:</strong> ' . htmlspecialchars($name) . '</p>
+        <p><strong>Телефон:</strong> ' . htmlspecialchars($phone) . '</p>
+        <hr>
+        <p><strong>Форма окна:</strong> ' . htmlspecialchars($form) . '</p>
+        <p><strong>Ширина:</strong> ' . htmlspecialchars($width) . ' мм</p>
+        <p><strong>Высота:</strong> ' . htmlspecialchars($height) . ' мм</p>
+        <p><strong>Тип:</strong> ' . htmlspecialchars($type) . '</p>
+        <p><strong>Профиль:</strong> ' . htmlspecialchars($profile) . '</p>
         <p><em>Дата: ' . date('d.m.Y H:i') . '</em></p>
     ';
 

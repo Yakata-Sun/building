@@ -1055,7 +1055,7 @@ textarea:focus {
 }
 
 .checkbox-custom[id="cold"]::before {
-  background: url(../img/modal_calc/check.png) center center no-repeat;
+  background: url(../../public/images/modal_calc/check.png) center center no-repeat;
 }
 
 .no-background {
@@ -1063,7 +1063,7 @@ textarea:focus {
 }
 
 .checkbox-custom[id="warm"]::before {
-  background: url(../img/modal_calc/check_warm.png) center center no-repeat;
+  background: url(../../public/images/modal_calc/check_warm.png) center center no-repeat;
 }
 
 .popup_calc_profile_content .label {
@@ -1823,3 +1823,4 @@ textarea:focus {
     animation: none !important;
   }
 }
+

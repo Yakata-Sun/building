@@ -1,4 +1,6 @@
-const forms = () =>{
+import checkNumber from './checkNumber';
+
+const forms = (state) =>{
   const forms = document.querySelectorAll('form'),
     inputs = document.querySelectorAll('input'),
     statusMessage = {
@@ -6,6 +8,8 @@ const forms = () =>{
       fail: "Что-то пошло не так...",
       ok: 'Ваше сообщение отправлено'
     };
+
+    checkNumber('input[name="user_phone"]');
 
     const clearInputs = () =>
       inputs.forEach(item => {
@@ -26,12 +30,20 @@ const forms = () =>{
     forms.forEach(item => {
       item.addEventListener('submit', (e) => {
         e.preventDefault();
-
+        
         let statusM = document.createElement('div');
         statusM.classList.add("status");
         item.appendChild(statusM);
 
         const formData = new FormData(item);
+        if (item.getAttribute('data-calc') === 'end') {
+
+          for (let key in state) {
+            formData.append(key, state[key]);
+          }
+          
+        }
+console.log(formData);
 
         postData("../mailer/smart.php", formData)
           .then(res => {
